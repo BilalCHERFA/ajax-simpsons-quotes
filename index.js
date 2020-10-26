@@ -24,4 +24,8 @@
         });
     }
 
+    document.getElementById("myBtn").addEventListener("click", function() {
+      fetchSimpsonsJSON()    
+    }); 
+
     fetchSimpsonsJSON();
