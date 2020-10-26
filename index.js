@@ -1,22 +1,27 @@
-// This function loads pokemon data from the Pokemon API
-function fetchPokemonJSON() {
-    // Feel free to download this HTML and edit it, to use another Pokemon ID
-    const pokemonId = 1;
-    const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
-    axios.get(url)
-      .then(function(response) {
-        return response.data; // response.data instead of response.json() with fetch
-      })
-      .then(function(pokemon) {
-        console.log('data decoded from JSON:', pokemon);
-  
-        // Build a block of HTML
-        const pokemonHtml = `
-          <p><strong>${pokemon.name}</strong></p>
-          <img src="${pokemon.sprites.front_shiny}" />
+
+
+
+
+    // This function loads simpsons data from the simpsons API
+    function fetchSimpsonsJSON() {
+
+      const url = `https://simpsons-quotes-api.herokuapp.com/quotes`;
+      axios.get(url)
+        .then(function (response) {
+          return response.data; // response.data instead of response.json() with fetch
+        })
+        .then(function (simpsons) {
+          console.log('data decoded from JSON:', simpsons[0].quote);
+
+          // Build a block of HTML
+          const simpsonsHtml = `
+          <p><strong>${simpsons[0].quote}</strong></p>
+          <p>${simpsons[0].character}</p>
+
+          <img src="${simpsons[0].image}" />
         `;
-        document.querySelector('#pokemon').innerHTML = pokemonHtml;
-      });
-  }
-  
-  fetchPokemonJSON();
+          document.querySelector('#simpsons').innerHTML = simpsonsHtml;
+        });
+    }
+
+    fetchSimpsonsJSON();
